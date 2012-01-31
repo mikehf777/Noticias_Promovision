@@ -1,0 +1,7 @@
+parameters:
+#    diario.example.class: Noticias\DiarioBundle\Example
+
+services:
+#    diario.example:
+#        class: %diario.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

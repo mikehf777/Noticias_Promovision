@@ -1,0 +1,28 @@
+UsuarioBundle:
+    resource: "@UsuarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+PlazaBundle:
+    resource: "@PlazaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+NotaBundle:
+    resource: "@NotaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+EstadisticaBundle:
+    resource: "@EstadisticaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+DiarioBundle:
+    resource: "@DiarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+AdministradorBundle:
+    resource: "@AdministradorBundle/Resources/config/routing.yml"
+    prefix:   /
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

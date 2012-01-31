@@ -1,0 +1,7 @@
+parameters:
+#    nota.example.class: Noticias\NotaBundle\Example
+
+services:
+#    nota.example:
+#        class: %nota.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

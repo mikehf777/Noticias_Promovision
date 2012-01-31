@@ -1,0 +1,7 @@
+parameters:
+#    plaza.example.class: Noticias\PlazaBundle\Example
+
+services:
+#    plaza.example:
+#        class: %plaza.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

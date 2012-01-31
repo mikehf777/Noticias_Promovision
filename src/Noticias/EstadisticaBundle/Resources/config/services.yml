@@ -1,0 +1,7 @@
+parameters:
+#    estadistica.example.class: Noticias\EstadisticaBundle\Example
+
+services:
+#    estadistica.example:
+#        class: %estadistica.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

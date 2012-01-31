@@ -1,0 +1,3 @@
+AdministradorBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AdministradorBundle:Default:index }
