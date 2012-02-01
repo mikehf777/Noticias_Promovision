@@ -112,15 +112,17 @@ class Nota
      */
     private $fecha_succ;
 
-    /* 
-	 * @ORM\ManyToOne(targetEntity="Noticias\UsuarioBundle\Entity\Usuario")
-	 */
-    private $usuario;
+     /**
+      * @ORM\ManyToOne(targetEntity="Noticias\UsuarioBundle\Entity\Usuario")
+      *
+      */
+      private $usuario;
 	
-	/** @ORM\ManyToMany(targetEntity="Noticias\NotaBundle\Entity\Noticiero", inversedBy="notas") 
-	 *  * @ORM\JoinTable(name="noticieros_notas")
-	 */
-	private $noticieros;
+    /**
+      * @ORM\ManyToMany(targetEntity="Noticias\NotaBundle\Entity\Noticiero", inversedBy="notas") 
+      * @ORM\JoinTable(name="noticieros_notas")
+      */
+      private $noticieros;
 	
 
 
