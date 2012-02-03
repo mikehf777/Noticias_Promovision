@@ -3,6 +3,7 @@
 namespace Noticias\PlazaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Noticias\PlazaBundle\Util\Util;
 
 /**
  * Noticias\PlazaBundle\Entity\Plaza
@@ -50,13 +51,6 @@ class Plaza
     private $direccion;
 
     /**
-     * @var string $ciudad
-     *
-     * @ORM\Column(name="ciudad", type="string", length=255)
-     */
-    private $ciudad;
-
-    /**
      * @var string $estado
      *
      * @ORM\Column(name="estado", type="string", length=255)
@@ -88,6 +82,7 @@ class Plaza
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+        $this->slug = Util::getSlug($nombre);
     }
 
     /**
@@ -160,25 +155,6 @@ class Plaza
         return $this->direccion;
     }
 
-    /**
-     * Set ciudad
-     *
-     * @param string $ciudad
-     */
-    public function setCiudad($ciudad)
-    {
-        $this->ciudad = $ciudad;
-    }
-
-    /**
-     * Get ciudad
-     *
-     * @return string 
-     */
-    public function getCiudad()
-    {
-        return $this->ciudad;
-    }
 
     /**
      * Set estado
