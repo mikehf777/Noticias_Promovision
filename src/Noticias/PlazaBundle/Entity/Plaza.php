@@ -20,7 +20,21 @@ class Plaza
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+	
+	/**
+     * @var string $nombre
+     *
+     * @ORM\Column(name="nombre", type="string", length=255)
+     */
+    private $nombre;
+	
+	/**
+     * @var string $slug
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+	
     /**
      * @var string $municipio
      *
@@ -54,10 +68,7 @@ class Plaza
      *
      * @ORM\Column(name="telefono", type="string", length=255)
      */
-    private $telefono;
-
-
-
+    private $telefono;    
 
     /**
      * Get id
@@ -70,15 +81,53 @@ class Plaza
     }
 
     /**
+     * Set nombre
+     *
+     * @param string $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * Set municipio
      *
      * @param string $municipio
-     * @return Plaza
      */
     public function setMunicipio($municipio)
     {
         $this->municipio = $municipio;
-        return $this;
     }
 
     /**
@@ -95,12 +144,10 @@ class Plaza
      * Set direccion
      *
      * @param text $direccion
-     * @return Plaza
      */
     public function setDireccion($direccion)
     {
         $this->direccion = $direccion;
-        return $this;
     }
 
     /**
@@ -117,12 +164,10 @@ class Plaza
      * Set ciudad
      *
      * @param string $ciudad
-     * @return Plaza
      */
     public function setCiudad($ciudad)
     {
         $this->ciudad = $ciudad;
-        return $this;
     }
 
     /**
@@ -139,12 +184,10 @@ class Plaza
      * Set estado
      *
      * @param string $estado
-     * @return Plaza
      */
     public function setEstado($estado)
     {
         $this->estado = $estado;
-        return $this;
     }
 
     /**
@@ -161,12 +204,10 @@ class Plaza
      * Set telefono
      *
      * @param string $telefono
-     * @return Plaza
      */
     public function setTelefono($telefono)
     {
         $this->telefono = $telefono;
-        return $this;
     }
 
     /**
