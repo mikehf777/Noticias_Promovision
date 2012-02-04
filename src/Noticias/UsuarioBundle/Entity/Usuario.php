@@ -92,11 +92,11 @@ class Usuario
     private $password;
 
     /**
-     * @var string $slug
+     * @var string $salt
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="salt", type="string", length=255)
      */
-    private $slug;
+    private $salt;
 
     /**
      * @var boolean $activo
@@ -365,25 +365,25 @@ class Usuario
     }
 
     /**
-     * Set slug
+     * Set salt
      *
-     * @param string $slug
+     * @param string $salt
      * @return Usuario
      */
-    public function setSlug($slug)
+    public function setSalt($salt)
     {
-        $this->slug = $slug;
+        $this->salt = $salt;
         return $this;
     }
 
     /**
-     * Get slug
+     * Get salt
      *
      * @return string 
      */
-    public function getSlug()
+    public function getSalt()
     {
-        return $this->slug;
+        return $this->salt;
     }
 
     /**
