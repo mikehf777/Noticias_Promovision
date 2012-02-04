@@ -30,10 +30,20 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface
             //$encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
             //$passwordCodificado = $encoder->encodePassword($passwordEnClaro, $usuario->getSalt());
             $usuario->setPassword('usuario'.$i);
-			
-			 
+			$usuario->setFechaNac(new \DateTime('now - '.rand(7000, 20000).' days'));
+			$usuario->setTelCasa(rand(10000, 99999));
+			$usuario->setTelOfi(rand(30000, 60000));
+			$usuario->setNextel(rand(50000, 70000));
+			$usuario->setCelular(rand(50000, 70000));
+			$usuario->setAlias('usuario'.$i);
+			$usuario->setActivo(true);
+			$usuario->setSession(false);
+			$usuario->setPuesto($this->getPuestos());
+			$usuario->setPlaza($plazas[rand(0, count($plazas)-1)]);
+		    $manager->persist($usuario);
 			
 		}
+			$manager->flush();
 		
 	}
 	private function getNombre()
@@ -55,5 +65,12 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface
         $apellidos = array('García', 'González', 'Rodríguez', 'Fernández', 'López', 'Martínez', 'Sánchez', 'Pérez', 'Gómez', 'Martín', 'Jiménez', 'Ruiz', 'Hernández', 'Díaz', 'Moreno', 'Álvarez', 'Muñoz', 'Romero', 'Alonso', 'Gutiérrez', 'Navarro', 'Torres', 'Domínguez', 'Vázquez', 'Ramos', 'Gil', 'Ramírez', 'Serrano', 'Blanco', 'Suárez', 'Molina', 'Morales', 'Ortega', 'Delgado', 'Castro', 'Ortíz', 'Rubio', 'Marín', 'Sanz', 'Iglesias', 'Nuñez', 'Medina', 'Garrido');
         
         return $apellidos[rand(0, count($apellidos)-1)].' '.$apellidos[rand(0, count($apellidos)-1)];
+    }
+	 private function getPuestos()
+    {
+        
+        $puestos = array('Programador', 'Jefe', 'Reportero', 'Camarografo', 'Ilusinista', 'Mago', 'Administrador', 'Columnista', 'Jornalero', 'Policia', 'Militar', 'Gordito');
+        
+        return $puestos[rand(0, count($puestos)-1)];
     }
 }
