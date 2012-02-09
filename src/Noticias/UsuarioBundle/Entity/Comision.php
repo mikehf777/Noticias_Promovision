@@ -26,7 +26,15 @@ class Comision
      *
      * @ORM\Column(name="titulo", type="string", length=255)
      */
+    
     private $titulo;
+	
+	 /**
+     * @var date $fecha
+     *
+     * @ORM\Column(name="fecha", type="date")
+     */
+    private $fecha;
 
     /**
      * @var text $descripcion
@@ -51,10 +59,6 @@ class Comision
 	
 	/** @ORM\ManyToOne(targetEntity="Noticias\UsuarioBundle\Entity\Usuario") */
 	private $usuario;
-
-
-
-
     /**
      * Get id
      *
@@ -86,7 +90,28 @@ class Comision
     {
         return $this->titulo;
     }
+	
+	/**
+     * Set fecha
+     *
+     * @param date $fecha
+     * @return Comision
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+        return $this;
+    }
 
+    /**
+     * Get fecha
+     *
+     * @return date 
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
     /**
      * Set descripcion
      *

@@ -12,4 +12,5 @@ web/js/*
 .settings/com.aptana.editor.php.prefs
 .metadata
 .metadata/*
-
+/nbproject/*
+/nbproject/private/

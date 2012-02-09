@@ -50,11 +50,11 @@ class Nota
     private $inserto;
 
     /**
-     * @var string $camarorafo
+     * @var string $camarografo
      *
-     * @ORM\Column(name="camarorafo", type="string", length=255)
+     * @ORM\Column(name="camarografo", type="string", length=255)
      */
-    private $camarorafo;
+    private $camarografo;
 
     /**
      * @var string $editor
@@ -71,11 +71,11 @@ class Nota
     private $conductor;
 
     /**
-     * @var boolean $prioridad
+     * @var boolean $urgente
      *
-     * @ORM\Column(name="prioridad", type="boolean")
+     * @ORM\Column(name="urgente", type="boolean")
      */
-    private $prioridad;
+    private $urgente;
 
     /**
      * @var datetime $fecha_crea
@@ -230,25 +230,25 @@ class Nota
     }
 
     /**
-     * Set camarorafo
+     * Set camarografo
      *
-     * @param string $camarorafo
+     * @param string $camarografo
      * @return Nota
      */
-    public function setCamarorafo($camarorafo)
+    public function setCamarografo($camarografo)
     {
-        $this->camarorafo = $camarorafo;
+        $this->camarografo = $camarografo;
         return $this;
     }
 
     /**
-     * Get camarorafo
+     * Get camarografo
      *
      * @return string 
      */
-    public function getCamarorafo()
+    public function getCamarografo()
     {
-        return $this->camarorafo;
+        return $this->camarografo;
     }
 
     /**
@@ -296,25 +296,25 @@ class Nota
     }
 
     /**
-     * Set prioridad
+     * Set urgente
      *
-     * @param boolean $prioridad
+     * @param boolean $urgente
      * @return Nota
      */
-    public function setPrioridad($prioridad)
+    public function setUrgente($urgente)
     {
-        $this->prioridad = $prioridad;
+        $this->urgente = $urgente;
         return $this;
     }
 
     /**
-     * Get prioridad
+     * Get urgente
      *
      * @return boolean 
      */
-    public function getPrioridad()
+    public function getUrgente()
     {
-        return $this->prioridad;
+        return $this->urgente;
     }
 
     /**
@@ -425,6 +425,28 @@ class Nota
     public function getFechaSucc()
     {
         return $this->fecha_succ;
+    }
+    
+      /**
+     * Set usuario
+     *
+     * @param Noticias\UsuarioBundle\Entity\Usuario $usuario
+     * @return Nota
+     */
+    public function setUsuario(\Noticias\UsuarioBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return Noticias\UsuarioBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**
