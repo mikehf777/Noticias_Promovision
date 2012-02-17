@@ -3,15 +3,46 @@
 namespace Noticias\UsuarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\ExecutionContext;
+
+
+
 
 /**
  * Noticias\UsuarioBundle\Entity\Usuario
- *
+ * 
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity(fields="alias")
  */
-class Usuario
+class Usuario implements UserInterface
 {
+
+    function equals(\Symfony\Component\Security\Core\User\UserInterface $user)
+    {
+         return $this->getAlias() == $user->getAlias();
+    }
+
+    function eraseCredentials()
+    {
+        return false;
+    }
+    
+
+    function getRoles()
+    {
+       return array('ROLE_USER');
+    }
+
+    function getUsername()
+    {
+       return $this->getAlias();
+    }
+    
+
     /**
      * @var integer $id
      *
@@ -25,6 +56,7 @@ class Usuario
      * @var string $nombre
      *
      * @ORM\Column(name="nombre", type="string", length=255)
+     * @Assert\NotBlank(message = "Por favor, escribe tu nombre")
      */
     private $nombre;
 
@@ -32,6 +64,7 @@ class Usuario
      * @var string $apellidos
      *
      * @ORM\Column(name="apellidos", type="string", length=400)
+     * @Assert\NotBlank(message = "Por favor, escribe tus apellidos")
      */
     private $apellidos;
 
@@ -39,6 +72,7 @@ class Usuario
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=400)
+     * @Assert\Email()
      */
     private $email;
 
@@ -46,6 +80,7 @@ class Usuario
      * @var date $fecha_nac
      *
      * @ORM\Column(name="fecha_nac", type="date")
+     * @Assert\NotBlank()
      */
     private $fecha_nac;
 
@@ -80,16 +115,18 @@ class Usuario
     /**
      * @var string $alias
      *
-     * @ORM\Column(name="alias", type="string", length=300)
+     * @ORM\Column(name="alias", type="string", length=300, unique=true)
+     * @Assert\NotBlank() 
      */
-    private $alias;
+    protected $alias;
 
     /**
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=300)
+     * @Assert\MinLength(6)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string $salt
@@ -493,4 +530,5 @@ class Usuario
     {
         return $this->fuentes;
     }
+
 }

@@ -1,3 +1,24 @@
 UsuarioBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: UsuarioBundle:Default:index }
+
+
+registro:
+    pattern: /registro
+    defaults: {  _controller: UsuarioBundle:Default:registro}
+
+login:
+    pattern: /login/
+    defaults: { _controller: UsuarioBundle:Login:login }
+
+# Ruta para la acción que comprueba el login del frontend
+check_path:
+    pattern: /check
+
+# Ruta para la acción de logout de los usuarios del frontend extranet
+logout:
+    pattern: /logout
+
+inicio:
+    pattern: /inicio
+    defaults: { _controller: UsuarioBundle:Default:inicio }

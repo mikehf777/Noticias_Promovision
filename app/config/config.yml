@@ -36,12 +36,12 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        port:     %database_port%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
+        driver:   pdo_mysql
+        host:     localhost
+        port:     ~
+        dbname:   noticias
+        user:     noticia
+        password: noticia
         charset:  UTF8
 
     orm:

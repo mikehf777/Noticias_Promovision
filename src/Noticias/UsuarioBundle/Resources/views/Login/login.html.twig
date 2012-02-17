@@ -1,0 +1,32 @@
+
+{% extends '::master.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block stylesheets %}{% endblock %}
+     
+{% block article %}
+       {% if error %}
+       <div>{{ error.message }}</div>
+       {% endif %}
+       <form action="{{ path('check_path') }}" method="post">
+
+       <label for="username">Usuario:</label>
+       <input type="text" id="username" name="_username"value="{{ last_username }}" />
+
+       <label for="password">Contraseña:</label>
+       <input type="password" id="password" name="_password" />
+
+       <input type="checkbox" id="no_cerrar" name="_remember_me" checked />
+       <label for="no_cerrar">No cerrar sesión</label>
+
+       <input type="submit" name="login" value="Acceder" />
+
+       </form>
+
+{% endblock %}
+
+{% block aside %}{% endblock %}
+
+
+
+

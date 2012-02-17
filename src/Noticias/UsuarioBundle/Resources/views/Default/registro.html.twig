@@ -1,0 +1,21 @@
+
+{% extends '::master.html.twig' %}
+
+{% block title %}registrar usuario{% endblock %}
+{% block id 'registro' %}
+{% block article %}
+
+<div><h1>esta es la pagina para dar de alta usuarios</h1></div>
+
+<form action="{{ path('registro') }}" method="post">
+      
+{{ form_widget(formulario) }}
+
+
+<input class="boton" type="submit" value="Registrarme" />
+</form>
+
+
+{% endblock %}
+{% block aside %}{% endblock %}
+
