@@ -1,35 +1,42 @@
 <?php
 namespace Noticias\UsuarioBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\ORM;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Noticias\UsuarioBundle\Entity\Usuario;
 use Noticias\PlazaBundle\Util\Util;
-
-class Usuarios extends AbstractFixture implements OrderedFixtureInterface
+use Noticias\NotaBundle\Entity\Fuente;
+class Usuarios extends AbstractFixture implements OrderedFixtureInterface,ContainerAwareInterface
 {
 	
     public function getOrder()
     {
-        return 20;
+        return 40;
     }
+     private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+    
 	 public function load (ObjectManager $manager)
 	{
 		$plazas=$manager->getRepository('PlazaBundle:Plaza')->findAll();
+                 $fuentes=$manager->getRepository('NotaBundle:Fuente')->findAll();
 		for ($i=0; $i <500 ; $i++) {
 			$usuario= new Usuario();
-			
 			$usuario->setNombre($this->getNombre());
 			$usuario->setApellidos($this->getApellidos());
 			$usuario->setEmail('usuario@'.$i.'.promovision.local');
-			//$usuario->setSalt(md5(time())); seran usadas mas adelante aun no se implementarlo
-			$usuario->setSalt('584488484848'.$i);
-            
-            //$passwordEnClaro = 'usuario'.$i;
-            //$encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
-            //$passwordCodificado = $encoder->encodePassword($passwordEnClaro, $usuario->getSalt());
-            $usuario->setPassword('usuario'.$i);
+			$usuario->setSalt(md5(time())); //seran usadas mas adelante aun no se implementar
+                        $passwordEnClaro = 'usuario'.$i;
+                        $encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
+                        $passwordCodificado = $encoder->encodePassword($passwordEnClaro, $usuario->getSalt());
+                        $usuario->setPassword($passwordCodificado);
 			$usuario->setFechaNac(new \DateTime('now - '.rand(7000, 20000).' days'));
 			$usuario->setTelCasa(rand(10000, 99999));
 			$usuario->setTelOfi(rand(30000, 60000));
@@ -40,7 +47,8 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface
 			$usuario->setSession(false);
 			$usuario->setPuesto($this->getPuestos());
 			$usuario->setPlaza($plazas[rand(0, count($plazas)-1)]);
-		    $manager->persist($usuario);
+                        $usuario->getFuentes()->add($fuentes[rand(0, count($fuentes)-1)]);
+                        $manager->persist($usuario);
 			
 		}
 			$manager->flush();

@@ -9,8 +9,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\ExecutionContext;
 
 
-
-
 /**
  * Noticias\UsuarioBundle\Entity\Usuario
  * 
@@ -20,29 +18,6 @@ use Symfony\Component\Validator\ExecutionContext;
  */
 class Usuario implements UserInterface
 {
-
-    function equals(\Symfony\Component\Security\Core\User\UserInterface $user)
-    {
-         return $this->getAlias() == $user->getAlias();
-    }
-
-    function eraseCredentials()
-    {
-        return false;
-    }
-    
-
-    function getRoles()
-    {
-       return array('ROLE_USER');
-    }
-
-    function getUsername()
-    {
-       return $this->getAlias();
-    }
-    
-
     /**
      * @var integer $id
      *
@@ -381,6 +356,7 @@ class Usuario implements UserInterface
 
     /**
      * Set password
+     * 
      *
      * @param string $password
      * @return Usuario
@@ -530,5 +506,29 @@ class Usuario implements UserInterface
     {
         return $this->fuentes;
     }
+    
+
+    function equals(\Symfony\Component\Security\Core\User\UserInterface $user)
+    {
+         return $this->getAlias() == $user->getAlias();
+    }
+
+    function eraseCredentials()
+    {
+        return false;
+    }
+    
+
+    function getRoles()
+    {
+       return array('ROLE_USER');
+    }
+
+    function getUsername()
+    {
+       return $this->getAlias();
+    }
+
+
 
 }

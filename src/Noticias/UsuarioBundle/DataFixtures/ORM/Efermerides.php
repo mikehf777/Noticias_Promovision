@@ -12,7 +12,7 @@ class Efermerides extends AbstractFixture implements OrderedFixtureInterface
 	
     public function getOrder()
     {
-        return 40;
+        return 50;
     }
 
 public function load (ObjectManager $manager)

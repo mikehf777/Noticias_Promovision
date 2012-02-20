@@ -12,7 +12,7 @@ class Fuentes extends AbstractFixture implements OrderedFixtureInterface
 	
     public function getOrder()
     {
-        return 50;
+        return 20;
     }
 
 public function load (ObjectManager $manager)
@@ -41,11 +41,12 @@ public function load (ObjectManager $manager)
             'Nam rhoncus lorem sed libero hendrerit accumsan.',
             'Maecenas non erat eu justo rutrum condimentum.',
 		);
+    
                 for ($i=0; $i <count($fuentes) ; $i++) 
             {  
              $fuente = new Fuente();
              $fuente->setNombre($fuentes[$i]);
-             $fuente->setDescripcion($descripcion[$i]);;
+             $fuente->setDescripcion($descripcion[$i]);
              $manager->persist($fuente);
 	    }
 	     $manager->flush();
