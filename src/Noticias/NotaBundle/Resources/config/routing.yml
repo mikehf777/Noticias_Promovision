@@ -1,3 +1,8 @@
 NotaBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: NotaBundle:Default:index }
+    
+
+nota:
+    pattern:  /nota/creanotas/
+    defaults: { _controller: NotaBundle:Nota:nota }
