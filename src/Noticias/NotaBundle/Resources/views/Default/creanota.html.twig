@@ -1,0 +1,57 @@
+
+{% extends '::master.html.twig' %}
+
+{% block title %}Crea Notas{% endblock %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('bundles/nota/css/nota.css') }}"rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('bundles/nota/js/ckeditor.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/nota/js/config.js') }}" type="text/javascript"></script>
+
+{% endblock %}
+
+
+{% block id 'creanota' %}
+{% block article %}
+
+<div><h1>esta es la pagina para crear notas</h1></div>
+
+<form action="{{ path('nota') }}" method="post">
+     
+{{ form_widget(formulario) }}
+
+<script type="text/javascript">
+        CKEDITOR.replace("{{ 'Avance' }}");
+</script>
+
+<select name="Fuente" id="Fuente">
+
+{% for fuente in fuentes %}
+
+<option value="{{fuente.nombre}}">
+
+</option>"
+
+{% endfor%}
+
+</select>
+
+
+<br>
+<static><textarea  class="ckeditor" id="Avance" name="Avance" required></static>&lt;p&gt;Ingrese aqui su avance.&lt;/p&gt;</textarea>
+<br>
+
+
+<input class="boton" type="submit" value="Crear nota" />
+</form>
+
+
+{% endblock %}
+{% block aside %}{% endblock %}
+
