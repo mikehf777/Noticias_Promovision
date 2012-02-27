@@ -1,7 +1,7 @@
 
 {% extends '::master.html.twig' %}
 
-{% block title %}Crea Notas{% endblock %}
+{% block title %}Crea Avance{% endblock %}
 
 {% block stylesheets %}
 
@@ -20,7 +20,7 @@
 {% block id 'creanota' %}
 {% block article %}
 
-<div><h1>esta es la pagina para crear notas</h1></div>
+<div><h1>pagina para crear un avance de nota</h1></div>
 
 <form action="{{ path('nota') }}" method="post">
      
@@ -30,22 +30,62 @@
         CKEDITOR.replace("{{ 'Avance' }}");
 </script>
 
-<select name="Fuente" id="Fuente">
+<script type="text/javascript">
+        CKEDITOR.replace("{{ 'Inserto' }}");
+</script>
 
-{% for fuente in fuentes %}
+<br>Editor
+</br>
+<select name="Editor" id="Editor">
 
-<option value="{{fuente.nombre}}">
+{% for useredit in useredits %}
 
-</option>"
+      <option value="{{useredit.nombre}} {{useredit.apellidos}} "> {{ useredit.nombre }} {{useredit.apellidos}}
+
+      </option>"
+
+{% endfor%}
+
+</select>
+
+<br>Camarografo
+</br>
+<select name="Camarografo" id="Camarografo">
+
+{% for usercam in usercams %}
+
+      <option value="{{usercam.nombre}} {{usercam.apellidos}} "> {{ usercam.nombre }} {{usercam.apellidos}}
+
+      </option>"
 
 {% endfor%}
 
 </select>
 
 
-<br>
+<br>Fuentes
+</br>
+<select name="Fuente" id="Fuente">
+
+{% for fuente in fuentes %}
+
+      <option value="{{fuente.nombre}}"> {{ fuente.nombre }}
+
+      </option>"
+
+{% endfor%}
+
+</select>
+
+
+
+
+<br>Avance
+</br>
 <static><textarea  class="ckeditor" id="Avance" name="Avance" required></static>&lt;p&gt;Ingrese aqui su avance.&lt;/p&gt;</textarea>
-<br>
+<br>Inserto
+</br>
+<static><textarea  class="ckeditor" id="Inserto" name="Inserto" required></static>&lt;p&gt;Ingrese aqui su inserto.&lt;/p&gt;</textarea>
 
 
 <input class="boton" type="submit" value="Crear nota" />

@@ -7,17 +7,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
 
-class NotaType extends AbstractType
+class AvanceType extends AbstractType
  {
      public function buildForm(FormBuilder $builder,array $options)
      {
-         $builder->add('titulo')
-                 ->add('camarografo')          
-                 ->add('editor')
-                 ->add('conductor')             
-                 ->add('urgente')
+         $builder->add('titulo')                    
                  ->add('fecha_crea','birthday', array('label'=> 'Fecha de creacion'))
                  ->add('fecha_succ','birthday', array('label'=> 'Fecha del suceso'))
+                 ->add('urgente')
                  ->add('estatal')
                  ->add('anual');
                  
@@ -28,7 +25,7 @@ class NotaType extends AbstractType
     }
      public function getName()
      {
-          return 'nota';
+          return 'avance';
      }
 
 

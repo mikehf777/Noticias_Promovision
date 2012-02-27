@@ -77,7 +77,7 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface,Contai
 	 private function getPuestos()
     {
         
-        $puestos = array('Programador', 'Jefe', 'Reportero', 'Camarografo', 'Ilusinista', 'Mago', 'Administrador', 'Columnista', 'Jornalero', 'Policia', 'Militar', 'Gordito');
+        $puestos = array('Programador', 'Editor', 'Reportero', 'Camarografo', 'Conductor', 'Mago', 'Administrador', 'Columnista', 'Jornalero', 'Policia', 'Militar', 'Gordito');
         
         return $puestos[rand(0, count($puestos)-1)];
     }

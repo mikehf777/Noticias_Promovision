@@ -4,5 +4,5 @@ NotaBundle_homepage:
     
 
 nota:
-    pattern:  /nota/creanotas/
-    defaults: { _controller: NotaBundle:Nota:nota }
+    pattern:  /avancenota/
+    defaults: { _controller: NotaBundle:Avance:avance }

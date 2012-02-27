@@ -118,4 +118,10 @@ class Fuente
     {
         return $this->usuarios;
     }
+    
+    public function __toString()
+    {
+       return $this->getNombre();
+    }
+  
 }
