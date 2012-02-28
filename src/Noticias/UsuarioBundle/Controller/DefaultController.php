@@ -18,6 +18,12 @@ class DefaultController extends Controller
          $usuario = $this->get('security.context')->getToken()->getUser();
         return $this->render('UsuarioBundle:Default:inicio.html.twig', array('usuario' => $usuario));
     }
+        public function editorAction()
+    {
+         $usuario = $this->get('security.context')->getToken()->getUser();
+        return $this->render('UsuarioBundle:Default:editor.html.twig', array('usuario' => $usuario));
+    }
+    
     public function registroAction()
     {
     
@@ -36,7 +42,8 @@ class DefaultController extends Controller
 
                 // Obtenemos el usuario
                 $usuario = $formulario->getData(); 
-                $usuario->setSalt(md5(time()));             
+                $usuario->setSalt(md5(time()));  
+                $usuario->setRol($_POST['formDoor']);
  
                 $factory = $this->get('security.encoder_factory');
                 $codificador = $factory->getEncoder($usuario);

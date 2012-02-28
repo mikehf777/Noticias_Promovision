@@ -42,3 +42,7 @@ security:
          - { path: ^/login     , roles:  IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/registro  , roles:  IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/inicio    , roles:  ROLE_USER }
+         - { path: ^/editor    , roles:  ROLE_EDITOR }
+         - { path: ^/administracion    , roles:  ROLE_ADMIN }
+         
+         

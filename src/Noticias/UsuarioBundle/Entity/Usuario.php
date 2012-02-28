@@ -130,6 +130,14 @@ class Usuario implements UserInterface
      * @ORM\Column(name="puesto", type="string", length=255)
      */
     private $puesto;
+    
+      /**
+     * @var array $rol
+     *
+     * @ORM\Column(name="rol", type="array")
+     */
+    private $rol;
+
 
     /** @ORM\ManyToOne(targetEntity="Noticias\PlazaBundle\Entity\Plaza") */
     private $plaza;
@@ -464,6 +472,32 @@ class Usuario implements UserInterface
     {
         return $this->puesto;
     }
+    
+    
+        /**
+     * Set rol
+     *
+     * @param array $rol
+     * @return Usuario
+     */
+    public function setRol($rol)
+    {
+        
+        $this->rol[]= $rol;
+    }
+
+    /**
+     * Get rol
+     *
+     * @return array 
+     */
+    public function getRol()
+    {
+        return $this->rol;
+    }
+    
+    
+
 
     /**
      * Set plaza
@@ -521,7 +555,9 @@ class Usuario implements UserInterface
 
     function getRoles()
     {
-       return array('ROLE_USER');
+              
+       return $this->getRol();
+       
     }
 
     function getUsername()

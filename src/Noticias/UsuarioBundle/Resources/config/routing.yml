@@ -22,3 +22,7 @@ logout:
 inicio:
     pattern: /inicio
     defaults: { _controller: UsuarioBundle:Default:inicio }
+    
+editor:
+    pattern: /editor
+    defaults: { _controller: UsuarioBundle:Default:editor }

@@ -46,6 +46,7 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface,Contai
 			$usuario->setActivo(true);
 			$usuario->setSession(false);
 			$usuario->setPuesto($this->getPuestos());
+                        $usuario->setRol($this->getRol());
 			$usuario->setPlaza($plazas[rand(0, count($plazas)-1)]);
                         $usuario->getFuentes()->add($fuentes[rand(0, count($fuentes)-1)]);
                         $manager->persist($usuario);
@@ -81,4 +82,13 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface,Contai
         
         return $puestos[rand(0, count($puestos)-1)];
     }
+    	 private function getRol()
+    {
+        
+        $puestos = array('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_JEFE', 'ROLE_JEFENOTICIAS', 'ROLE_DIRECTORNOTICIAS', 'CAPTURISTA');
+        
+        return $puestos[rand(0, count($puestos)-1)];
+    }
+    
+    
 }
