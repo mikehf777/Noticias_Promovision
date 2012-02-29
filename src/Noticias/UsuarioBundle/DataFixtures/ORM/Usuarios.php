@@ -87,7 +87,7 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface,Contai
     	 private function getRol()
     {
         
-        $puestos = array('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_JEFE', 'ROLE_JEFENOTICIAS', 'ROLE_DIRECTORNOTICIAS', 'CAPTURISTA');
+        $puestos = array(array('ROLE_ADMIN', 'ROLE_EDITOR', 'ROLE_JEFE', 'ROLE_JEFENOTICIAS', 'ROLE_DIRECTORNOTICIAS', 'CAPTURISTA'));
         
         return $puestos[rand(0, count($puestos)-1)];
     }

@@ -557,7 +557,6 @@ class Usuario implements UserInterface ,  \Serializable
     {
      
         $roles=$this->getRol();
-        
         return $roles;
        
     }
