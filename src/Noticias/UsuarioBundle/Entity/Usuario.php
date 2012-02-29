@@ -556,9 +556,8 @@ class Usuario implements UserInterface ,  \Serializable
     function getRoles()
     {
      
-        $roles=$this->getRol();
+        $roles=$this->Roles_Sting();
         return $roles;
-       
     }
 
     function getUsername()
@@ -581,6 +580,17 @@ class Usuario implements UserInterface ,  \Serializable
      */
     public function unserialize($data) {
       $this->id = unserialize($data);
+    }
+    
+    private function Roles_Sting()
+    {
+        $rol_en_string=array();
+        $roles=$this->getRol();
+        for($i=0;$i<count($roles);$i++)
+        {
+           $rol_en_string=$roles[$i];
+        }
+        return $rol_en_string;
     }
 
 

@@ -12,7 +12,7 @@ class DefaultController extends Controller
     {
         return $this->render('AdministradorBundle:Default:index.html.twig', array('name' => $name));
     }
-        public function adminAction($name)
+        public function adminAction()
     {
         return $this->render('AdministradorBundle:Default:admin.html.twig');
     }
