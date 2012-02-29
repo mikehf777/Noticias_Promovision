@@ -555,8 +555,9 @@ class Usuario implements UserInterface
 
     function getRoles()
     {
-              
-       return $this->getRol();
+     
+        $roles=$this->getRol();
+        return $roles;
        
     }
 
