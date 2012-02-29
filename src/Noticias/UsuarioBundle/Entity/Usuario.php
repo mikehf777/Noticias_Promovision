@@ -557,6 +557,7 @@ class Usuario implements UserInterface
     {
      
         $roles=$this->getRol();
+        
         return $roles;
        
     }

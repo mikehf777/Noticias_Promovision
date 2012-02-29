@@ -43,7 +43,8 @@ class DefaultController extends Controller
                 // Obtenemos el usuario
                 $usuario = $formulario->getData(); 
                 $usuario->setSalt(md5(time()));  
-                $usuario->setRol($_POST['formDoor']);
+                //check contiene el array de los boxes usados
+                $usuario->setRol($_POST['check']);
  
                 $factory = $this->get('security.encoder_factory');
                 $codificador = $factory->getEncoder($usuario);
