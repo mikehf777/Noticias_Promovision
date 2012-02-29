@@ -2,6 +2,7 @@
 namespace Noticias\UsuarioBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\ORM;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -9,6 +10,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Noticias\UsuarioBundle\Entity\Usuario;
 use Noticias\PlazaBundle\Util\Util;
 use Noticias\NotaBundle\Entity\Fuente;
+
 class Usuarios extends AbstractFixture implements OrderedFixtureInterface,ContainerAwareInterface
 {
 	
@@ -34,7 +36,7 @@ class Usuarios extends AbstractFixture implements OrderedFixtureInterface,Contai
 			$usuario->setEmail('usuario@'.$i.'.promovision.local');
 			$usuario->setSalt(md5(time())); //seran usadas mas adelante aun no se implementar
                         $passwordEnClaro = 'usuario'.$i;
-                        $encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario);
+                        $encoder = $this->container->get('security.encoder_factory')->getEncoder($usuario); 
                         $passwordCodificado = $encoder->encodePassword($passwordEnClaro, $usuario->getSalt());
                         $usuario->setPassword($passwordCodificado);
 			$usuario->setFechaNac(new \DateTime('now - '.rand(7000, 20000).' days'));

@@ -16,7 +16,7 @@ use Symfony\Component\Validator\ExecutionContext;
  * @ORM\Entity
  * @UniqueEntity(fields="alias")
  */
-class Usuario implements UserInterface
+class Usuario implements UserInterface ,  \Serializable
 {
     /**
      * @var integer $id
@@ -564,6 +564,23 @@ class Usuario implements UserInterface
     function getUsername()
     {
        return $this->getAlias();
+   
+    }
+    
+   /**
+     * serialize the username
+     * @return serialize
+     */
+    public function serialize() {
+      return serialize($this->id);
+    }
+
+     /**
+     * unserialize
+     * @param $data 
+     */
+    public function unserialize($data) {
+      $this->id = unserialize($data);
     }
 
 
