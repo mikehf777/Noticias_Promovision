@@ -19,16 +19,11 @@ class UsuarioType extends AbstractType
                        'options' => array('label' => 'Contraseña'
                        )))                   
                  ->add('fecha_nac','birthday', array('label'=> 'Fecha de nacim'))
-                 ->add('tel_casa')
-                 ->add('tel_ofi')
-                 ->add('nextel')
-                 ->add('celular')
                  ->add('activo') 
-                 ->add('session')
-                 ->add('puesto');
+                 ->add('session');
                  
      }
-     public function getDefaultOptions(array $options)
+    public function getDefaultOptions(array $options)
     {
         return array('data_class' => 'Noticias\UsuarioBundle\Entity\Usuario',);
     }
