@@ -3,6 +3,11 @@ NotaBundle_homepage:
     defaults: { _controller: NotaBundle:Default:index }
     
 
-nota:
+avance:
     pattern:  /avancenota/
     defaults: { _controller: NotaBundle:Avance:avance }
+
+
+nota:
+    pattern:  /terminarnota/
+    defaults: { _controller: NotaBundle:Nota:nota }
