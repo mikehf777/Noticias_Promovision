@@ -9,17 +9,17 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body {% block id '' %}>
-        <header id="header">
-           {% block header %}{% endblock %}
+        <header>
+           {# header #}
         </header>
-        <article id="article">
+        <article>
            {% block article %}{% endblock %}
         </article>
         <aside>
            {% block aside %}{% endblock %}
         </aside>
-        <footer id="footer">
-           {% block footer %}{% endblock %}
+        <footer>
+           {# footer#}
         </footer>
 
     </body>
