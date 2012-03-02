@@ -30,24 +30,6 @@
         CKEDITOR.replace("{{ 'Avance' }}");
 </script>
 
-<script type="text/javascript">
-        CKEDITOR.replace("{{ 'Inserto' }}");
-</script>
-
-<br>Editor
-</br>
-<select name="Editor" id="Editor">
-
-{% for useredit in useredits %}
-
-      <option value="{{useredit.nombre}} {{useredit.apellidos}} "> {{ useredit.nombre }} {{useredit.apellidos}}
-
-      </option>"
-
-{% endfor%}
-
-</select>
-
 <br>Camarografo
 </br>
 <select name="Camarografo" id="Camarografo">
@@ -83,10 +65,6 @@
 <br>Avance
 </br>
 <static><textarea  class="ckeditor" id="Avance" name="Avance" required></static>&lt;p&gt;Ingrese aqui su avance.&lt;/p&gt;</textarea>
-<br>Inserto
-</br>
-<static><textarea  class="ckeditor" id="Inserto" name="Inserto" required></static>&lt;p&gt;Ingrese aqui su inserto.&lt;/p&gt;</textarea>
-
 
 <input class="boton" type="submit" value="Crear nota" />
 </form>
