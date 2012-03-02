@@ -44,5 +44,6 @@ security:
          - { path: ^/inicio    , roles:  ROLE_USER }
          - { path: ^/editor    , roles:  ROLE_EDITOR }
          - { path: ^/administracion    , roles:  ROLE_ADMIN }
+         - { path: ^/avancenota    , roles:  ROLE_EDITOR }
          
          

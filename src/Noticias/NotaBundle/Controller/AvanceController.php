@@ -15,6 +15,8 @@ class AvanceController extends Controller
     public function avanceAction()
     {
         //obtenemos el objeto a insertar en el combox
+        
+        $usuario = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getEntityManager();
         $fuentes = $em->getRepository('NotaBundle:Fuente')->findAll();
         $usercams = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
@@ -45,6 +47,7 @@ class AvanceController extends Controller
             $hoy = new \DateTime('now');
             $nota->setFechaCrea($hoy);
             $nota->setUrgente(FALSE);
+            $nota->setUsuario($usuario);
 
            
             
@@ -59,7 +62,8 @@ class AvanceController extends Controller
         return $this->render('NotaBundle:Default:creaavance.html.twig', array(
                                    'formulario' => $formulario->createView(),
                                    'fuentes' => $fuentes,
-                                   'usercams' => $usercams
+                                   'usercams' => $usercams,
+                                   'usuario' => $usuario
                                    
                                
 ));
