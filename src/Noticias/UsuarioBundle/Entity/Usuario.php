@@ -13,7 +13,7 @@ use Symfony\Component\Validator\ExecutionContext;
  * Noticias\UsuarioBundle\Entity\Usuario
  * 
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Noticias\UsuarioBundle\Entity\UsuarioRepository")
  * @UniqueEntity(fields="alias")
  */
 class Usuario implements UserInterface ,  \Serializable
