@@ -21,6 +21,7 @@ class AvanceController extends Controller
                                        'puesto' => 'Camarografo'));
         $useredits = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
                                        'puesto' => 'Editor'));
+        
         $userconds = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
                                        'puesto' => 'Conductor'));
 
@@ -52,7 +53,7 @@ class AvanceController extends Controller
             $em->persist($nota);
             $em->flush();
             //redirigimos al usuario a otro lugar
-             return $this->redirect($this->generateUrl('terminarnota'));
+             return $this->redirect($this->generateUrl('terminarnota',array('nota' => $nota,'userconds' => $userconds)));
         }
       }
         return $this->render('NotaBundle:Default:creaavance.html.twig', array(

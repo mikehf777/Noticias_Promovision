@@ -54,7 +54,7 @@ class Usuario implements UserInterface ,  \Serializable
     /**
      * @var date $fecha_nac
      *
-     * @ORM\Column(name="fecha_nac", type="date")
+     * @ORM\Column(name="fecha_nac", type="date", nullable=true)
      * @Assert\NotBlank()
      */
     private $fecha_nac;
@@ -62,21 +62,21 @@ class Usuario implements UserInterface ,  \Serializable
     /**
      * @var string $tel_casa
      *
-     * @ORM\Column(name="tel_casa", type="string", length=255)
+     * @ORM\Column(name="tel_casa", type="string", length=255, nullable=true)
      */
     private $tel_casa;
 
     /**
      * @var string $tel_ofi
      *
-     * @ORM\Column(name="tel_ofi", type="string", length=255)
+     * @ORM\Column(name="tel_ofi", type="string", length=255, nullable=true)
      */
     private $tel_ofi;
 
     /**
      * @var string $nextel
      *
-     * @ORM\Column(name="nextel", type="string", length=255 )
+     * @ORM\Column(name="nextel", type="string", length=255, nullable=true)
      */
     private $nextel;
 

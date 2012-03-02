@@ -41,10 +41,20 @@ class DefaultController extends Controller
 
 
                 // Obtenemos el usuario
+                $nulo="nulo";
                 $usuario = $formulario->getData(); 
                 $usuario->setSalt(md5(time()));  
                 //check contiene el array de los boxes usados
                 $usuario->setRol($_POST['check']);
+                $usuario->setPuesto($_POST['Puesto']);
+                
+                $usuario->setTelCasa($nulo);
+                $usuario->setTelOfi($nulo);
+                $usuario->setNextel($nulo);
+                $usuario->setCelular($nulo);
+               
+                
+                //encriptacion de la contraseña
  
                 $factory = $this->get('security.encoder_factory');
                 $codificador = $factory->getEncoder($usuario);

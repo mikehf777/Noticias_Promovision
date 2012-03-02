@@ -1,7 +1,80 @@
-<?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
+{% extends '::master.html.twig' %}
+
+{% block title %}Terminar Nota{% endblock %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('bundles/nota/css/nota.css') }}"rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('bundles/nota/js/ckeditor.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/nota/js/config.js') }}" type="text/javascript"></script>
+
+{% endblock %}
+
+
+{% block id 'creanota' %}
+{% block article %}
+
+<div><h1>pagina para terminar una nota</h1></div>
+
+<form action="{{ path('nota') }}" method="post">
+     
+{{ form_widget(formulario) }}
+
+<script type="text/javascript">
+        CKEDITOR.replace("{{ 'Avance' }}");
+</script>
+
+<script type="text/javascript">
+        CKEDITOR.replace("{{ 'Inserto' }}");
+</script>
+
+<script type="text/javascript">
+        CKEDITOR.replace("{{ 'Nota' }}");
+</script>
+
+{{nota.titulo}}
+{{nota.camarografo}}
+{{nota.editor}}
+{{nota.fecha_crea}}
+{{nota.fecha_succ}}
+{{nota.fuente}}
+{{nota.estatal}}
+{{nota.anual}}
+{{nota.urgente}}
+
+<select name="Conductor" id="Conductor">
+
+{% for usercond in userconds %}
+
+      <option value="{{usercond.nombre}} {{usercond.apellidos}} "> {{ usercond.nombre }} {{usercond.apellidos}}
+
+      </option>"
+
+{% endfor%}
+
+</select>
+
+<br>Avance
+</br>
+<static><textarea  class="ckeditor" id="Avance" name="Avance" required></static>&lt;p&gt;{{nota.avance}}.&lt;/p&gt;</textarea>
+<br>Inserto
+</br>
+<static><textarea  class="ckeditor" id="Inserto" name="Inserto" required></static>&lt;p&gt;{{nota.inserto}}.&lt;/p&gt;</textarea>
+
+<br>Nota
+</br>
+<static><textarea  class="ckeditor" id="Nota" name="Nota" required></static>&lt;p&gt;Ingrese aqui su nota.&lt;/p&gt;</textarea>
+
+<input class="boton" type="submit" value="Terminar nota" />
+</form>
+
+
+{% endblock %}
+{% block aside %}{% endblock %}
+
