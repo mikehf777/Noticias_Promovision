@@ -15,13 +15,12 @@ class AvanceController extends Controller
     public function avanceAction()
     {
         //obtenemos el objeto a insertar en el combox
+        
+        $usuario = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getEntityManager();
         $fuentes = $em->getRepository('NotaBundle:Fuente')->findAll();
         $usercams = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
                                        'puesto' => 'Camarografo'));
-        $useredits = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
-                                       'puesto' => 'Editor'));
-        
         $userconds = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
                                        'puesto' => 'Conductor'));
 
@@ -41,12 +40,16 @@ class AvanceController extends Controller
             //rellenamos el formulario y los campos que faltan aqui
             $nota = $formulario->getData(); 
             
-           
-            $nota->setEditor($_POST["Editor"]);
+                     
             $nota->setCamarografo($_POST["Camarografo"]);
             $nota->setFuente($_POST["Fuente"]);
             $nota->setAvance($_POST["Avance"]);
-            $nota->setInserto($_POST["Inserto"]);
+            $hoy = new \DateTime('now');
+            $nota->setFechaCrea($hoy);
+            $nota->setUrgente(FALSE);
+            $nota->setUsuario($usuario);
+
+           
             
             // Guardamos el objeto en base de datos
             $em = $this->getDoctrine()->getEntityManager();
@@ -58,10 +61,10 @@ class AvanceController extends Controller
       }
         return $this->render('NotaBundle:Default:creaavance.html.twig', array(
                                    'formulario' => $formulario->createView(),
-                         
                                    'fuentes' => $fuentes,
                                    'usercams' => $usercams,
-                                   'useredits' => $useredits
+                                   'usuario' => $usuario
+                                   
                                
 ));
     }

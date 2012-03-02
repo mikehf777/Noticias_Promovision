@@ -11,12 +11,10 @@ class AvanceType extends AbstractType
  {
      public function buildForm(FormBuilder $builder,array $options)
      {
-         $builder->add('titulo')                    
-                 ->add('fecha_crea','birthday', array('label'=> 'Fecha de creacion'))
+         $builder->add('titulo')                              
                  ->add('fecha_succ','birthday', array('label'=> 'Fecha del suceso'))
-                 ->add('urgente')
-                 ->add('estatal')
-                 ->add('anual');
+                 ->add('estatal','checkbox', array('required' => false))
+                 ->add('anual','checkbox', array('required' => false));
                  
      }
      public function getDefaultOptions(array $options)
