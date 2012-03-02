@@ -7,11 +7,18 @@ class NotaRepository extends EntityRepository
     {
         $hoy = new \DateTime('today');
         $em = $this->getDoctrine()->getEntityManager();
-        $consulta = $em->createQuery('SELECT o FROM NotaBundle:Nota o WHERE o.fecha_crea = :fecha AND o.usuario = :usuario');
+        $dql='SELECT o 
+               FROM NotaBundle:Nota o 
+               WHERE o.fecha_crea = :fecha 
+                 AND o.usuario = :usuario
+              ORDER BY o.fecha_crea ASC ';
+        
+        $consulta = $em->createQuery($dql);
         $consulta->setParameter('fecha',$hoy);
         $consulta->setParameter('usuario',$usuario);
-        $avences = $consulta->getResult();
-        return $avences;    
+        
+        
+        return $consulta->getResult();    
     }
 }
 ?>
