@@ -1,5 +1,3 @@
-
-
 UsuarioBundle:
     resource: "@UsuarioBundle/Resources/config/routing.yml"
     prefix:   /

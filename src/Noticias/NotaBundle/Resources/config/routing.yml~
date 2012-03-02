@@ -8,7 +8,7 @@ avance:
 
 tabla_avance:
     pattern:  /tabla/
-    defaults: { _controller: NotaBundle:Avance:tabla_avance }
+    defaults: { _controller: NotaBundle:Avance:avance }
 
 nota:
     pattern:  /terminarnota/

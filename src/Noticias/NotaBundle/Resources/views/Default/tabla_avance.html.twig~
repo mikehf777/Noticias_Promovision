@@ -1,0 +1,20 @@
+{% extends '::master.html.twig' %}
+
+{% block title %}Login Noticias{% endblock %}
+{% block stylesheets %}
+	<link href="{{ asset('bundles/usuario/css/style.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block header %}
+	<!--<div id="content_header">-->
+		<div class="header">
+			<div class="logo"></div>
+			<div class="menu"></div>
+		</div>
+	<!--</div>-->
+{% endblock %}
+
+{% block article %}
+	{{ avances.id }}
+
+{% endblock %}
