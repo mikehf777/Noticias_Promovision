@@ -1,31 +1,51 @@
 
 {% extends '::master.html.twig' %}
 
-{% block title %}{% endblock %}
-{% block stylesheets %}{% endblock %}
-     
-{% block article %}
-       {% if error %}
-       <div>{{ error.message }}</div>
-       {% endif %}
-       <form action="{{ path('check_path') }}" method="post">
-
-       <label for="username">Usuario:</label>
-       <input type="text" id="username" name="_username"value="{{ last_username }}" />
-
-       <label for="password">Contraseña:</label>
-       <input type="password" id="password" name="_password" />
-
-       <input type="checkbox" id="no_cerrar" name="_remember_me" checked />
-       <label for="no_cerrar">No cerrar sesión</label>
-
-       <input type="submit" name="login" value="Acceder" />
-
-       </form>
-
+{% block title %}Login Noticias{% endblock %}
+{% block stylesheets %}
+	<link href="{{ asset('bundles/usuario/css/login.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-{% block aside %}{% endblock %}
+{% block header %}
+	<!--<div id="content_header">-->
+		<div class="header">
+			<div class="logo"></div>
+			<div class="menu"></div>
+		</div>
+	<!--</div>-->
+{% endblock %}
+
+{% block article %}
+	<div id="article">
+       {% if error %}
+       <div class="error"">{{ error.message }}</div>
+       {% endif %}
+       <div class="login">
+       		<p>Inicio de Sesión</p>
+		   <form action="{{ path('check_path') }}" method="post">
+			<div class="login_container">
+			   <label class="input" for="username">Usuario: </label>
+			   <input type="text" id="username" name="_username"value="{{ last_username }}" />
+				<br/>
+			   <label class="input" for="password">Contraseña: </label>
+			   <input type="password" id="password" name="_password" />
+				<br/>		   
+				<input type="checkbox" id="no_cerrar" name="_remember_me" checked />
+			   <label class="session" for="no_cerrar">No cerrar sesión</label>
+			</div>
+			<br/>
+		   <input type="submit" name="login" value="Acceder" />
+
+		   </form>
+       </div>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	<div class="footer">
+		<p>Copyright<span class="sub">©<span> 2008-2012 Canal 10. Una compañía de Promovision del Caribe S.A. de C.V.</p>
+	<div>
+{% endblock %}
 
 
 
