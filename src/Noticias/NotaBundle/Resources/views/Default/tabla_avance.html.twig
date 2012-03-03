@@ -15,18 +15,9 @@
 {% endblock %}
 
 {% block article %}
-<<<<<<< HEAD
-	{{ avances }}
 	{% for avance in avances %}
-		Avance {{ loop.index }}
 		{{ avance.id }}
 		<br/>
-=======
-	{% for a in avances %}
-	   {{ a.id }}
-           {{ a.titulo }}     
->>>>>>> f34b26abee5f14772ed54a52bbd8e71832d7102f
+		{{ avance.titulo }}
 	{% endfor%}
-
-
 {% endblock %}
