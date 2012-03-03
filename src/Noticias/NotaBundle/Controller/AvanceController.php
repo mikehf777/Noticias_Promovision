@@ -17,7 +17,7 @@ class AvanceController extends Controller
         //obtenemos el objeto a insertar en el combox
         
         $usuario = $this->get('security.context')->getToken()->getUser();
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getEntityManager();//Se instancia el entity manager
         $fuentes = $em->getRepository('NotaBundle:Fuente')->findAll();
         $usercams = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
                                        'puesto' => 'Camarografo'));
@@ -52,7 +52,6 @@ class AvanceController extends Controller
            
             
             // Guardamos el objeto en base de datos
-            $em = $this->getDoctrine()->getEntityManager();
             $em->persist($nota);
             $em->flush();
             //redirigimos al usuario a otro lugar
@@ -67,6 +66,16 @@ class AvanceController extends Controller
                                    
                                
 ));
+    }
+    public function tabla_avanceAction()
+    {
+        $usuario = $this->get('security.context')->getToken()->getUser();
+        $usuario_id = $usuario->getId();
+        $em=$this->getDoctrine()->getEntityManager();
+        $avances=$em->getRepository('NotaBundle:Nota')->findAvancesDelDia_Reporteros($usuario_id); //////Pasar id del usuario logeado
+        return $this->render('NotaBundle:Default:tabla_avance.html.twig',array('avances'=>$avances));
+        
+        
     }
     
 }

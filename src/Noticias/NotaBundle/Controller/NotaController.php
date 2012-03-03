@@ -47,4 +47,5 @@ class NotaController extends Controller
        
     }
     
+    
 }

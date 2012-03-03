@@ -1,9 +1,5 @@
 @charset "utf-8";
-/* 
-	CSS Sistema Noticias UsuarioBundle
-	Desarrolladores Jorge Pool, Mike Huerta, Arturo Jimenez
-	Version 2.0
- */
+/* CSS Sistema Noticias UsuarioBundle */
 
 /*header section*/
 #header{width:100%; height:310px; background-color:#890707; margin:0; text-align:center ;
@@ -22,11 +18,11 @@ background-image: -webkit-gradient(	linear,	left bottom, left top, color-stop(0.
 .login label.input{width:110px; float:left}
 .login label.session{margin:0 0 5px 0; font:12px bold;}
 .login div.login_container{border-bottom:solid 1px; border-top:solid 1px; padding: 13px 0 10px 0;}
-.login p{font:15px bold Arial, Helvetica, sans-serif; background-color:#890707; color:#FFF;}
+.login p{font:15px bold arial; background-color:#890707; color:#FFF;}
 .error{font:bold; color:#000;}
 
 /* footer section */
 #footer{width:100%; background-color:#890707; margin:0; text-align:center; bottom:0px;}
 .footer{width:1024px; margin:0 auto; padding:1px 0 2px 0;}
-.footer p{font:13px bolder Arial, Helvetica, sans-serif; color:#FFF; text-align:right; margin:0;}
+.footer p{font:13px bolder; color:#FFF; text-align:right; margin:0;}
 .footer span.sub{font:5px;}

@@ -10,10 +10,6 @@ tabla_avance:
     pattern:  /tabla/
     defaults: { _controller: NotaBundle:Avance:tabla_avance }
 
-prueba:
-    pattern:  /prueba/
-    defaults: { _controller: NotaBundle:Avance:prueba }
-
 nota:
     pattern:  /terminarnota/
     defaults: { _controller: NotaBundle:Nota:nota }
