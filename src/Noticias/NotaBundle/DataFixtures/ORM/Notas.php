@@ -32,7 +32,7 @@ class Notas extends AbstractFixture implements OrderedFixtureInterface
 			$nota->setUsuario($usuarios[rand(0, count($usuarios)-1)]);
                         $nota->setEstatal(false);
                         $nota->setAnual(false);
-                        $nota->setFechaSucc(new \DateTime('now - '.rand(1, 150).' days'));
+                        $nota->setFechaSucc(new \DateTime(rand(1, 150).' days'));
 			$manager->persist($nota);
 		}
 		$manager->flush();

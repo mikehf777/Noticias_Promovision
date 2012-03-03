@@ -11,11 +11,11 @@ class NotaRepository extends EntityRepository
         $dql='SELECT n, u
                FROM NotaBundle:Nota n
                JOIN n.usuario u
-               WHERE n.fecha_crea = :fecha 
+               WHERE n.fecha_crea >= :fecha 
                  AND n.usuario = :usuario
-              ORDER BY n.fecha_crea ASC ';
+              ORDER BY n.fecha_crea ASC';
         $consulta = $em->createQuery($dql);
-        $consulta->setParameter('fecha',$hoy);
+        $consulta->setParameter('fecha', $hoy->format('d/m/Y').'00:00:00');
         $consulta->setParameter('usuario',$usuario);
         
         
