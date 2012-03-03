@@ -6,16 +6,17 @@ class NotaRepository extends EntityRepository
 {
     public function findAvancesDelDia_Reporteros($usuario)
     {
-        $hoy = new \DateTime('today');
+        $hoy = new \DateTime('today', 'YYYY/DD/MM hh:mm:ss');
+        $hoy->format('Y/m/d');
         $em = $this->getEntityManager();
-        $dql='SELECT n, u
+        $dql='SELECT n
                FROM NotaBundle:Nota n
                JOIN n.usuario u
-               WHERE n.fecha_crea = :fecha 
+               WHERE n.fecha_crea >= :fecha
                  AND n.usuario = :usuario
-              ORDER BY n.fecha_crea ASC ';
+              ';
         $consulta = $em->createQuery($dql);
-        $consulta->setParameter('fecha',$hoy);
+        $consulta->setParameter('fecha', '01XX-XX-XX 00:00:00');
         $consulta->setParameter('usuario',$usuario);
         
         
