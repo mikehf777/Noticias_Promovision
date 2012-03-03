@@ -5,7 +5,7 @@ UsuarioBundle_homepage:
 
 registro:
     pattern: /registro
-    defaults: {  _controller: UsuarioBundle:Default:registro}
+    defaults: {  _controller: UsuarioBundle:Registro:registro}
 
 login:
     pattern: /login/
