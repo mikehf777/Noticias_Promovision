@@ -15,10 +15,9 @@
 {% endblock %}
 
 {% block article %}
-	{% for a in avances %}
-	   {{ a.id }}
-           {{ a.titulo }}     
+	{% for avance in avances %}
+		{{ avance.id }}
+		<br/>
+		{{ avance.titulo }}
 	{% endfor%}
-
-
 {% endblock %}

@@ -7,7 +7,10 @@ class NotaRepository extends EntityRepository
     public function findNotasdelDia_Usuario($usuario)
     {
         $hoy = \date('Y-m-d');
+<<<<<<< HEAD
         $usuario_id=$usuario->getID();
+=======
+>>>>>>> e02c7214632e947e12891d9a07d3d595260c6e49
         $em = $this->getEntityManager();
         $dql='SELECT n, u
                FROM NotaBundle:Nota n
@@ -16,6 +19,7 @@ class NotaRepository extends EntityRepository
                  AND n.usuario = :usuario
               ORDER BY n.fecha_crea DESC';
         $consulta = $em->createQuery($dql);
+<<<<<<< HEAD
         $consulta->setParameter('fecha',$hoy);
         $consulta->setParameter('usuario',$usuario_id);
         
@@ -37,9 +41,12 @@ class NotaRepository extends EntityRepository
         $consulta = $em->createQuery($dql);
         $consulta->setParameter('fecha',$hoy);
         $consulta->setParameter('plaza',$usuario_id_plaza);
+=======
+        $consulta->setParameter('fecha', $hoy.'00:00:00');
+        $consulta->setParameter('usuario',$usuario);
+>>>>>>> e02c7214632e947e12891d9a07d3d595260c6e49
         
-        
-        return $consulta->getResult();    
+        return $consulta->getResult();
     }
 }
 ?>
