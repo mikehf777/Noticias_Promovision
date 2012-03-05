@@ -11,8 +11,5 @@ use Noticias\NotaBundle\Form\NotaType;
 class DefaultController extends Controller
 {
     
-    public function indexAction($name)
-    {
-        return $this->render('NotaBundle:Default:index.html.twig', array('name' => $name));
-    }
+    
 }

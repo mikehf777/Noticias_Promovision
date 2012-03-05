@@ -1,20 +1,13 @@
-NotaBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: NotaBundle:Default:index }
-    
+#------------------------------Rutas Reporteros---------------------------#
+#----------------formulario para crear avance-------------------#
 avance:
-    pattern:  /avancenota/
-    defaults: { _controller: NotaBundle:Avance:avance }
-
+    pattern:  /reportero/crea-avance/
+    defaults: { _controller: NotaBundle:Formulario:crear_avance }
+#----------------tabla de avances-------------------#
 tabla_avance:
-    pattern:  /tabla/
-    defaults: { _controller: NotaBundle:Avance:tabla_avance }
-
-prueba:
-    pattern:  /prueba/
-    defaults: { _controller: NotaBundle:Avance:prueba }
-
-nota:
-    pattern:  /terminarnota/
-    defaults: { _controller: NotaBundle:Nota:nota }
-
+    pattern:  /reportero/tabla-avances/
+    defaults: { _controller: NotaBundle:Avance:avances_reportero }
+#----------------switch de opcines  para el avance-------------------#    
+tabla_avance_opciones:
+    pattern:  /reportero/tabla-avances/{opcion}/
+    defaults: { _controller: NotaBundle:Avance:opciones_tabla_avances }
