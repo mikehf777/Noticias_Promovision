@@ -15,10 +15,12 @@
 {% endblock %}
 
 {% block article %}
-	{{ avances }}
 	{% for avance in avances %}
 		{{ avance.id }}
 		<br/>
 		{{ avance.titulo }}
+		<br/>
+		{{ avance.usuario.nombre }}
+		<br/>
 	{% endfor%}
 {% endblock %}

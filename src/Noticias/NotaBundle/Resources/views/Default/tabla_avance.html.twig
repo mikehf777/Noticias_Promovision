@@ -6,12 +6,10 @@
 {% endblock %}
 
 {% block header %}
-	<!--<div id="content_header">-->
 		<div class="header">
 			<div class="logo"></div>
 			<div class="menu"></div>
 		</div>
-	<!--</div>-->
 {% endblock %}
 
 {% block article %}
@@ -19,5 +17,8 @@
 		{{ avance.id }}
 		<br/>
 		{{ avance.titulo }}
+		<br/>
+		{{ avance.usuario.nombre }}
+		<br/>
 	{% endfor%}
 {% endblock %}

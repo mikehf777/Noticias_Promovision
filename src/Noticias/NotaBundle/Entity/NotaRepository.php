@@ -15,7 +15,7 @@ class NotaRepository extends EntityRepository
                  AND n.usuario = :usuario
               ORDER BY n.fecha_crea ASC';
         $consulta = $em->createQuery($dql);
-        $consulta->setParameter('fecha', $hoy.'00:00:00');
+        $consulta->setParameter('fecha', $hoy);
         $consulta->setParameter('usuario',$usuario);
         
         return $consulta->getResult();
