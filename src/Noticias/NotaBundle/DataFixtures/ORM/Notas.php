@@ -27,7 +27,7 @@ class Notas extends AbstractFixture implements OrderedFixtureInterface
                         $nota->setEditor($this->getCamarografos());
                         $nota->setConductor($this->getCamarografos());
                         $nota->setUrgente(false);
-                        $nota->setFechaCrea(new \DateTime('now - '.rand(1, 150).' days'));
+                        $nota->setFechaCrea(new \DateTime('today'));
 			$nota->setFuente($this->getFuentes($fuentes));
 			$nota->setUsuario($usuarios[rand(0, count($usuarios)-1)]);
                         $nota->setEstatal(false);
