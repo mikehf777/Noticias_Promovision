@@ -17,8 +17,17 @@
 		{{ avance.id }}
 		<br/>
 		{{ avance.titulo }}
+<<<<<<< HEAD
 		<br/>
 		{{ avance.usuario.nombre }}
 		<br/>
+=======
+                <a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' ,'nota': avance } ) }}">ver</a>
+
+                   
+                   
+                     
+
+>>>>>>> 5f56f34f8a4a15cf8697b286fcf349950bb3338d
 	{% endfor%}
 {% endblock %}

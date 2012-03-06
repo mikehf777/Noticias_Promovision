@@ -7,7 +7,7 @@ class NotaRepository extends EntityRepository
     public function findNotasdelDia_Usuario($usuario)
     {
         $hoy = \date('Y-m-d');
-        $usuario_id=$usuario->getID();
+        $usuario_id=$usuario->getId();
         $em = $this->getEntityManager();
         $dql='SELECT n, u
                FROM NotaBundle:Nota n
