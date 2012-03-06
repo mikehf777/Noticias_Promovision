@@ -27,9 +27,12 @@ class AvanceController extends Controller
      $avances=$em->getRepository('NotaBundle:Nota')->findNotasdeldia_Plaza($usuario); //////Pasar id del usuario logeado
      return $this->render('NotaBundle:Default:tabla_avance.html.twig',array('avances'=>$avances));       
     }
-    public function opciones_tabla_avancesAction($opc)
+    public function opcionesavancesAction($opcion)
     {
-        
-        
+        $em=$this->getDoctrine()->getEntityManager();
+        $peticion=$this->getRequest();
+        $nota=$peticion->request->get('nota');
+        //$avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' =>$nota_id));
+        return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$nota));   
     }        
 }
