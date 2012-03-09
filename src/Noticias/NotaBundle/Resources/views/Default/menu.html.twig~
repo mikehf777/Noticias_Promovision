@@ -1,0 +1,25 @@
+Menu
+
+{% if user == "Reportero" %}
+<nav>
+	<ul>
+		<li><input type="button" value="Comisiones" onclick="parent.contenido.location.href='."''".'"></li>
+		<li><input type="button" value="Crear Avance" onclick="parent.contenido.location.href='."'CreaAvance.php'".'"></li>
+		<li><input type="button" value="Terminar Nota" onclick="parent.contenido.location.href='."'Terminar_Nota.php'".'"></li>
+		<li><input type="button" value="Buscar" onclick="parent.contenido.location.href='."'FormularioBusReportero.php'".'"></li>
+		<li><input type="button" value="Ver" onclick="parent.contenido.location.href='."'VerTablaNota.php'".'"></li>
+		<li><input type="button" value="Contacto" onclick="parent.contenido.location.href='."''".'"></li>
+		<li><a href="cerrarsession.php"><input type="button" value="Cerrar Session" ></a></li>
+	</ul>
+</nav>
+{% elseif user == "Administrador" %}
+Admin
+{% elseif user == "Camarografo" %}
+Camarografo
+{% elseif user == "Editor" %}
+Editor
+{% elseif user == "Jefe Noticias" %}
+Jefe Notivias
+{% elseif user == "Jefe" %}
+Jefe
+{% endif %}

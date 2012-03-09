@@ -2,13 +2,17 @@
 
 {% block title %}Login Noticias{% endblock %}
 {% block stylesheets %}
-	<link href="{{ asset('bundles/usuario/css/style.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('bundles/nota/css/nota.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block header %}
 		<div class="header">
-			<div class="logo"></div>
-			<div class="menu">{% extends 'NotaBundle:Default:menu.html.twig' %}</div>
+			<div class="logo">
+				<img class="logo" alt="Logo Promovision" src="{{ asset('bundles/usuario/images/promovision.png') }}"/>
+			</div>
+			<div class="user_info"></div>
+			{% set user = 'Reportero' %}
+			<div class="menu">{% include 'NotaBundle:Default:menu.html.twig' %}</div>
 		</div>
 {% endblock %}
 
@@ -17,17 +21,6 @@
 		{{ avance.id }}
 		<br/>
 		{{ avance.titulo }}
-<<<<<<< HEAD
-		<br/>
-		{{ avance.usuario.nombre }}
-		<br/>
-=======
                 <a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' ,'nota': avance } ) }}">ver</a>
-
-                   
-                   
-                     
-
->>>>>>> 5f56f34f8a4a15cf8697b286fcf349950bb3338d
 	{% endfor%}
 {% endblock %}
