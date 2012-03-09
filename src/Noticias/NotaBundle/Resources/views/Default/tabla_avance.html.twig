@@ -15,15 +15,18 @@
 {% endblock %}
 
 {% block article %}
-	{% for avance in avances %}
-		{{ avance.id }}
-		<br/>
-		{{ avance.titulo }}
-                <a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' ,'nota': avance } ) }}">ver</a>
+	
+{% for avance in avances %}
+{{ avance.id }}
+<br/>
+{{ avance.titulo }}
+<a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' } ) }}">ver
+{{ app.session.set('id','avance.id') }}
+</a>
 
-                   
-                   
-                     
+{% endfor%} 
 
-	{% endfor%}
+
+
+            
 {% endblock %}
