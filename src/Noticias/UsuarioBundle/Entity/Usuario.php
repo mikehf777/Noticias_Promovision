@@ -592,6 +592,12 @@ class Usuario implements UserInterface ,  \Serializable
         }
         return $rol_en_string;
     }
+    public function __toString()
+ {
+     return $this->getNombre();
+ }
+
+
 
 
 
