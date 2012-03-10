@@ -92,13 +92,12 @@ sonata_admin:
         blocks:
             # display a dashboard block
             - { position: left, type: sonata.admin.block.admin_list }
-
-        groups:
-            default: ~
+    
 #Definicion de los servicios para el admin Bundle 
 services:
    sonata.noticas.admin.nota:
       class: Noticias\NotaBundle\Admin\NotaAdmin
       tags:
-        - { name: sonata.admin, manager_type: orm, group: 'Notas', label: Notas }
-      arguments: [null, Noticias\NotaBundle\Entity\Nota, NotaBundle:Admin]
+        - { name: sonata.admin, manager_type: orm, group: Nota, label: Notas }
+      arguments: [null, Noticias\NotaBundle\Entity\Nota, NotaBundle:NotaAdmin]
+     
