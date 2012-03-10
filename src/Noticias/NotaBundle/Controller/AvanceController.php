@@ -31,8 +31,15 @@ class AvanceController extends Controller
     {
         $em=$this->getDoctrine()->getEntityManager();
         $peticion=$this->getRequest();
+<<<<<<< HEAD
         $nota=$peticion->request->get('nota');
         $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' =>$nota_id));
         return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$nota));   
+=======
+        $nota_id=$peticion->query->get("nota");
+        
+        $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' =>$nota_id));
+        return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));  
+>>>>>>> ecc5d73e54949f8db5dc2a26996971b0ebf4e0ae
     }        
 }

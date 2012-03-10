@@ -17,10 +17,27 @@
 {% endblock %}
 
 {% block article %}
+<<<<<<< HEAD
 	{% for avance in avances %}
 		{{ avance.id }}
 		<br/>
 		{{ avance.titulo }}
                 <a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' ,'nota': avance } ) }}">ver</a>
 	{% endfor%}
+=======
+	
+{% for avance in avances %}
+{{ avance.id }}
+<br/>
+{{ avance.titulo }}
+<a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' } ) }}">ver
+{{ app.session.set('id','avance.id') }}
+</a>
+
+{% endfor%} 
+
+
+
+            
+>>>>>>> ecc5d73e54949f8db5dc2a26996971b0ebf4e0ae
 {% endblock %}
