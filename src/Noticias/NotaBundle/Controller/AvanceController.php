@@ -39,24 +39,12 @@ class AvanceController extends Controller
                                        'puesto' => 'Camarografo'));
         $fuentes = $em->getRepository('NotaBundle:Fuente')->findAll();
         $peticion=$this->getRequest();
-<<<<<<< HEAD
         $nota_id=$peticion->request->get("id");
         $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' => $nota_id ));
         return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance,
                                                                     'usercams'=>$usercams,
                                                                     'fuentes'=>$fuentes,
                                                                     'formulario' => $formulario->createView()));   
-=======
-<<<<<<< HEAD
-        $nota=$peticion->request->get('nota');
-        $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' =>$nota_id));
-        return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$nota));   
-=======
-        $nota_id=$peticion->query->get("nota");
-        
-        $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' =>$nota_id));
-        return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));  
->>>>>>> ecc5d73e54949f8db5dc2a26996971b0ebf4e0ae
->>>>>>> 976c95eb0a80f2ff25dc8eccd0f355e089631e65
+
     }        
 }
