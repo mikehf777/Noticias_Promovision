@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:    ~
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -58,3 +58,46 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        #sonata.admin_doctrine_orm.block.audit:
+        #    contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+
+        # Some specific block from the SonataMediaBundle
+        #sonata.media.block.media:
+        #sonata.media.block.gallery:
+        #sonata.media.block.feature_media:
+          
+sonata_admin:
+    title: 'Noticias - Promovision'
+    title_logo: /bundles/backend/logotipo.png
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list }
+    
+#Definicion de los servicios para el admin Bundle 
+services:
+   sonata.noticas.admin.nota:
+      class: Noticias\NotaBundle\Admin\NotaAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Nota, label: Notas }
+      arguments: [null, Noticias\NotaBundle\Entity\Nota, NotaBundle:NotaAdmin]
+     

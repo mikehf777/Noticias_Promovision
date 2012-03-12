@@ -2,23 +2,25 @@
 
 {% block title %}Login Noticias{% endblock %}
 {% block stylesheets %}
-	<link href="{{ asset('bundles/usuario/css/style.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('bundles/nota/css/nota.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block header %}
-	<!--<div id="content_header">-->
 		<div class="header">
-			<div class="logo"></div>
-			<div class="menu"></div>
+			<div class="logo">
+				<img src="{{ asset('bundles/usuario/images/promovision.png') }}"/>
+			</div>
+			<div class="user_info"></div>
+			{% set user = 'Reportero'%}
+			<div class="menu">{% include 'NotaBundle:Default:menu.html.twig'%}</div>
 		</div>
-	<!--</div>-->
 {% endblock %}
 
 {% block article %}
-	{{ avances }}
 	{% for avance in avances %}
 		{{ avance.id }}
 		<br/>
 		{{ avance.titulo }}
+                <a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' ,'nota': avance } ) }}">ver</a>
 	{% endfor%}
 {% endblock %}
