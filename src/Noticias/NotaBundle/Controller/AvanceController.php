@@ -47,4 +47,12 @@ class AvanceController extends Controller
                                                                     'formulario' => $formulario->createView()));   
 
     }        
+    public function update_avanceAction()
+    {
+
+        
+        
+       
+        
+    }
 }

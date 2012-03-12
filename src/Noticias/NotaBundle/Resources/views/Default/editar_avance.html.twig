@@ -24,7 +24,7 @@
         CKEDITOR.replace("{{ 'Avance' }}");
 </script>
 
- <form action="{{ path('tabla_avance_opciones',{ 'opcion': 'ver'}) }}" method="post">
+ <form action="{{ path('update_avance') }}" method="post">
 
 <input TYPE=TEXT NAME="titulo" VALUE= "{{ avance.titulo }}" size= "30">
 
@@ -69,6 +69,9 @@
 <br>Avance
 </br>
 <static><textarea  class="ckeditor" id="Avance" name="Avance" required></static>&lt;p&gt;{{ avance.avance | striptags }}.&lt;/p&gt;</textarea>
+
+<input type="hidden" name="id" id="id" VALUE= {{ avance.id }}>
+ <input type=submit value="terminar edicion">
 
   </form>
 {% endblock %}
