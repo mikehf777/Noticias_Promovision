@@ -32,6 +32,12 @@
                 <input type="hidden" name="id" id="id" VALUE= {{ id }}>
 
                 <input type=submit value="ver">
+                </form>
+                <form action="{{ path('tabla_avance_opciones',{ 'opcion': 'editar'}) }}" method="post">
+                <input type="hidden" name="id" id="id" VALUE= {{ id }}>
+
+                <input type=submit value="editar">
+                 
 
                  </form>            
 

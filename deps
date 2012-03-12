@@ -98,5 +98,5 @@ target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
     target=/exporter
 
 [SonataDoctrineORMAdminBundle]
-git=http://github.com/sonata-project/SonataDoctrineORMAdminBundle.git
-target=/bundles/Sonata/DoctrineORMAdminBundle
+    git=http://github.com/sonata-project/SonataDoctrineORMAdminBundle.git
+    target=/bundles/Sonata/DoctrineORMAdminBundle
