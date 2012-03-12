@@ -23,6 +23,10 @@ class NotaAdmin extends Admin{
     }
     protected function configureDatagridFilters(DatagridMapper $mapper)
    {
+          $mapper
+        ->add('id')
+        ->add('fuente')
+        ;
                
     }
 
