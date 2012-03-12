@@ -84,13 +84,6 @@ class AvanceController extends Controller
                 
                 break;
         }
-    }        
-    public function update_avanceAction()
-    {
-
-        
-        
-       
-        
-    }
-}
+    }       
+    
+ }
