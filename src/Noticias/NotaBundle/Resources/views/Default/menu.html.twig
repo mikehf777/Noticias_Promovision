@@ -1,0 +1,23 @@
+{% if user == "Reportero" %}
+<nav>
+	<ul>
+		<li><a>Comisiones</a></li>
+		<li><a>Crear Avance</a></li>
+		<li><a>Terminar Nota</a></li>
+		<li><a>Buscar</a></li>
+		<li><a>Ver</a></li>
+		<li><a>Contacto</a></li>
+		<li><a>Cerrar Secion</a></li>
+	</ul>
+</nav>
+{% elseif user == "Administrador" %}
+Admin
+{% elseif user == "Camarografo" %}
+Camarografo
+{% elseif user == "Editor" %}
+Editor
+{% elseif user == "Jefe Noticias" %}
+Jefe Notivias
+{% elseif user == "Jefe" %}
+Jefe
+{% endif %}

@@ -1,0 +1,76 @@
+
+{% extends '::master.html.twig' %}
+
+{% block title %}Edita Avance{% endblock %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('bundles/nota/css/nota.css') }}"rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('bundles/nota/js/ckeditor.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/nota/js/config.js') }}" type="text/javascript"></script>
+
+{% endblock %}
+
+
+{% block id 'editaavance' %}
+{% block article %}
+
+<script type="text/javascript">
+        CKEDITOR.replace("{{ 'Avance' }}");
+</script>
+
+ <form action="{{ path('tabla_avance_opciones',{ 'opcion': 'ver'}) }}" method="post">
+
+<input TYPE=TEXT NAME="titulo" VALUE= "{{ avance.titulo }}" size= "30">
+
+<br>antigua fecha del succeso: {{ avance.fechasucc |date("Y/m/d") }}
+</br>
+
+{{ form_widget(formulario) }} 
+
+
+<br>Camarografo
+</br>
+<select name="camarografo" id="camarografo">
+
+<option value="{{ avance.camarografo }}"> {{ avance.camarografo }}
+
+{% for usercam in usercams %}
+
+      <option value="{{usercam.nombre}} {{ usercam.apellidos }}"> {{ usercam.nombre }} {{ usercam.apellidos }}
+
+      </option>"
+
+{% endfor%}
+
+</select>
+
+<br>Fuente
+</br>
+<select name="fuente" id="fuente">
+
+<option value="{{ avance.fuente }}"> {{ avance.fuente }}
+
+{% for fuente in fuentes %}
+
+      <option value="{{fuente.nombre}} "> {{fuente.nombre}}
+
+      </option>"
+
+{% endfor%}
+
+</select>
+
+<br>Avance
+</br>
+<static><textarea  class="ckeditor" id="Avance" name="Avance" required></static>&lt;p&gt;{{ avance.avance | striptags }}.&lt;/p&gt;</textarea>
+
+  </form>
+{% endblock %}
+{% block aside %}{% endblock %}
+

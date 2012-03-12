@@ -1,2 +1,40 @@
+<<<<<<< HEAD
+
+{% extends '::master.html.twig' %}
+
+{% block title %}Login Noticias{% endblock %}
+{% block stylesheets %}
+	<link href="{{ asset('bundles/usuario/css/style.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block header %}
+	<!--<div id="content_header">-->
+		<div class="header">
+			<div class="logo"></div>
+			<div class="menu"></div>
+		</div>
+	<!--</div>-->
+{% endblock %}
+
+{% block article %}
+
+
+
+{{ avance.id }}
+{{ avance.titulo }}
+{{ avance.fechacrea |date("Y/m/d") }}
+{{ avance.fechasucc |date("Y/m/d") }}
+{{ avance.camarografo }}
+{{ avance.fuente }}
+{{ avance.avance | striptags }}
+
+     
+
+
+{% endblock %}
+{% block aside %}{% endblock %}
+
+=======
 {{ avance.id }}
 <a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' } ) }}">ver</a>
+>>>>>>> 976c95eb0a80f2ff25dc8eccd0f355e089631e65

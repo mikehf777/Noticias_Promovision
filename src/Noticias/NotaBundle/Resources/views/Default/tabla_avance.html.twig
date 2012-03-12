@@ -2,31 +2,41 @@
 
 {% block title %}Login Noticias{% endblock %}
 {% block stylesheets %}
-	<link href="{{ asset('bundles/usuario/css/style.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('bundles/nota/css/nota.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block header %}
-	<!--<div id="content_header">-->
 		<div class="header">
-			<div class="logo"></div>
-			<div class="menu"></div>
+			<div class="logo">
+				<img class="logo" alt="Logo Promovision" src="{{ asset('bundles/usuario/images/promovision.png') }}"/>
+			</div>
+			<div class="user_info"></div>
+			{% set user = 'Reportero' %}
+			<div class="menu">{% include 'NotaBundle:Default:menu.html.twig' %}</div>
 		</div>
-	<!--</div>-->
 {% endblock %}
 
 {% block article %}
+
+
 	
-{% for avance in avances %}
-{{ avance.id }}
-<br/>
-{{ avance.titulo }}
-<a href="{{ path('tabla_avance_opciones',{ 'opcion': 'ver' } ) }}">ver
-{{ app.session.set('id','avance.id') }}
-</a>
 
-{% endfor%} 
+  
+        {% for avance in avances %}
+		{{ avance.id }}
+		<br/>
+		{{ avance.titulo }}
+                 
+                {%set id = avance.id%}
+                <form action="{{ path('tabla_avance_opciones',{ 'opcion': 'ver'}) }}" method="post">
+                <input type="hidden" name="id" id="id" VALUE= {{ id }}>
 
+                <input type=submit value="ver">
 
+                 </form>            
 
-            
+	{% endfor%} 
+
 {% endblock %}
+
+

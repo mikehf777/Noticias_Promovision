@@ -5,20 +5,26 @@
 	Version 2.0
  */
 
-/*header section*/
-#header{width:100%; height:310px; background-color:#890707; margin:0; text-align:center ;
+/* General section*/
+body{
+height:100%;
+background-repeat: no-repeat;
 background-image: linear-gradient(bottom, rgb(255,255,255) 16%, rgb(214,55,55) 84%);
 background-image: -o-linear-gradient(bottom, rgb(255,255,255) 16%, rgb(214,55,55) 84%);
 background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 16%, rgb(214,55,55) 84%);
 background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 16%, rgb(214,55,55) 84%);
 background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 16%, rgb(214,55,55) 84%);
 background-image: -webkit-gradient(	linear,	left bottom, left top, color-stop(0.16, rgb(255,255,255)), color-stop(0.84, rgb(214,55,55)));}
-.header{width:1024px; height:300px; margin:0 auto;}
+
+/*header section*/
+#header{width:100%; height:310px; margin:0; text-align:center ;}
+.header{width:1024px; height:300px; margin:0 auto; text-align:center;}
+.logo{float:left; width:100%; height:240px; background:url(../images/promovision.png) no-repeat center; }
 
 /* body or article section*/
 #article{width:100%; text-align:center; margin:0;}
 .article{width:1024px; margin:0 auto;}
-.login{width:310px; height:250px; margin:0 auto;}
+.login{width:310px; height:220px; margin:0 auto; background:#fff; border-radius:5px;}
 .login label.input{width:110px; float:left}
 .login label.session{margin:0 0 5px 0; font:12px bold;}
 .login div.login_container{border-bottom:solid 1px; border-top:solid 1px; padding: 13px 0 10px 0;}
@@ -26,7 +32,7 @@ background-image: -webkit-gradient(	linear,	left bottom, left top, color-stop(0.
 .error{font:bold; color:#000;}
 
 /* footer section */
-#footer{width:100%; background-color:#890707; margin:0; text-align:center; bottom:0px;}
+#footer{width:100%; background-color:#890707; text-align:center; bottom:0px;}
 .footer{width:1024px; margin:0 auto; padding:1px 0 2px 0;}
 .footer p{font:13px bolder Arial, Helvetica, sans-serif; color:#FFF; text-align:right; margin:0;}
 .footer span.sub{font:5px;}
