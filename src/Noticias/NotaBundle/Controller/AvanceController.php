@@ -33,25 +33,25 @@ class AvanceController extends Controller
         $request = $this->getRequest();
         $id=$request->request->get("id");
         $em=$this->getDoctrine()->getEntityManager();
-        $avance=$em->getRepository('NotaBundle:Nota')->findByID($id);
-        $formulario = $this->createForm(new EditarAvanceType(), $avance);
-        if ($request->getMethod() == 'POST')
+        $nota=$em->getRepository('NotaBundle:Nota')->findByID($id);
+      if ($request->getMethod() == 'POST')
       {
         $formulario->bindRequest($request);
         //si el formulario es valido se dispone a insertar datos ala BD
         if ($formulario->isValid()) 
         {
             //rellenamos el formulario y los campos que faltan aqui
-            $avance = $formulario->getData();
-            $avance->setCamarografo($request->request->get("Camarografo"));
-            $avance->setFuente($request->request->get("Fuente"));
-            $avance->setAvance($request->request->get("Avance"));
-            $avance->setTitulo($request->request->get("Titulo"));
-            $em->merge($avance);
+             $nota = $formulario->getData();
+             $nota->setCamarografo($request->request->get("Camarografo"));
+             $nota->setFuente($request->request->get("Fuente"));
+             $nota->setAvance($request->request->get("Avance"));
+             $nota->setTitulo($request->request->get("Titulo"));
+            $em->merge( $nota);
             $em->flush();
+            return $this->redirect($this->generateUrl('reportero/tabla-avances'));
             
-    }
-}
+        }
+      }
     }
     
     public function opcionesavancesAction($opcion)
@@ -61,25 +61,22 @@ class AvanceController extends Controller
               $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' => $nota_id ));
         switch ($opcion)
         {
-            case "ver":
-            return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));
-            break ;
-            case "editar":
-        $nota= new $nota();
-        $formulario = $this->createForm(new EditarAvanceType(), $nota);
-        $em=$this->getDoctrine()->getEntityManager();
-        $usercams = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
-                                       'puesto' => 'Camarografo'));
-          $fuentes = $em->getRepository('NotaBundle:Fuente')->findAll();
-             return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',
-                                                                    array('avance'=>$avance,
-                                                                    'usercams'=>$usercams,
-                                                                    'fuentes'=>$fuentes,
-                                                                    'formulario' => $formulario->createView()));
-           break;
-            case "imprimir":
-                return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));
-                break;
+            case "ver": return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));
+                        break ;
+            case "editar": $nota= new $nota();
+                           $formulario = $this->createForm(new EditarAvanceType(), $nota);
+                           $em=$this->getDoctrine()->getEntityManager();
+                           $usercams = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
+                                                                                   'puesto' => 'Camarografo'));
+                           $fuentes = $em->getRepository('NotaBundle:Fuente')->findAll();
+                           return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',
+                                                                             array('avance'=>$avance,
+                                                                             'usercams'=>$usercams,
+                                                                             'fuentes'=>$fuentes,
+                                                                             'formulario' => $formulario->createView()));
+                           break;
+            case "imprimir": return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));
+                             break;
             case "e-mail":
                 
                 break;
