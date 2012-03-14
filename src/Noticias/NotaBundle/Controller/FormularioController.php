@@ -54,7 +54,7 @@ class FormularioController extends Controller
             $em->persist($nota);
             $em->flush();
             //redirigimos al usuario a otro lugar
-             return $this->redirect($this->generateUrl('terminarnota',array('nota' => $nota,'userconds' => $userconds)));
+             return $this->redirect($this->generateUrl('tabla_avance'));
         }
       }
         return $this->render('NotaBundle:Default:creaavance.html.twig', array(

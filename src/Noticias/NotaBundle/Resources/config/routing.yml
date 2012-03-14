@@ -14,8 +14,8 @@ tabla_avance_opciones:
 
 #----------------switch de opcines  para el avance-------------------#    
 update_avance:
-    pattern:  /reportero/tabla-avances/
-    defaults: { _controller: NotaBundle:Avance:update_avance }
+    pattern:  /reportero/tabla-avances/update/
+    defaults: { _controller: NotaBundle:Avance:opcionesavancese }
     
     
     

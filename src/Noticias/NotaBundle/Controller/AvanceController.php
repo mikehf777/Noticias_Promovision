@@ -30,10 +30,39 @@ class AvanceController extends Controller
     }
     public function update_avanceAction()
     {
-        $request = $this->getRequest();
-        $id=$request->request->get("id");
-        $em=$this->getDoctrine()->getEntityManager();
-        $nota=$em->getRepository('NotaBundle:Nota')->findByID($id);
+        
+        
+               
+          
+       
+          
+            
+            
+       
+      
+    }
+    
+    public function opcionesavancesAction($opcion)
+    {
+              $peticion=$this->getRequest();
+              $em=$this->getDoctrine()->getEntityManager();
+              $nota_id=$peticion->request->get("id");
+              $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' => $nota_id ));
+        switch ($opcion)
+        {
+            case "ver": return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));
+                        break ;
+            case "editar": 
+                               $nota= new Nota();
+                               $formulario = $this->createForm(new EditarAvanceType(), $nota);
+                               $request = $this->getRequest();
+                               $id=$request->request->get("id");
+                               $em=$this->getDoctrine()->getEntityManager();
+                               $nota=$em->getRepository('NotaBundle:Nota')->findById($id);
+                           
+                               
+                                //se comprueba que le formulario tenga un metodo post
+
       if ($request->getMethod() == 'POST')
       {
         $formulario->bindRequest($request);
@@ -41,31 +70,19 @@ class AvanceController extends Controller
         if ($formulario->isValid()) 
         {
             //rellenamos el formulario y los campos que faltan aqui
-             $nota = $formulario->getData();
-             $nota->setCamarografo($request->request->get("Camarografo"));
-             $nota->setFuente($request->request->get("Fuente"));
-             $nota->setAvance($request->request->get("Avance"));
-             $nota->setTitulo($request->request->get("Titulo"));
-            $em->merge( $nota);
-            $em->flush();
-            return $this->redirect($this->generateUrl('reportero/tabla-avances'));
+            $nota = $formulario->getData(); 
             
+            $nota->setCamarografo($request->request->get("camarografo"));
+            $nota->setFuente($request->request->get("fuente"));
+           
+            $nota->setAvance($request->request->get("Avance"));
+            $nota->setTitulo($request->request->get("titulo"));
+            $em->persist($nota);
+            $em->flush();
+            return $this->redirect($this->generateUrl('tabla_avance'));
         }
       }
-    }
-    
-    public function opcionesavancesAction($opcion)
-    {
-              $peticion=$this->getRequest();
-              $nota_id=$peticion->request->get("id");
-              $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' => $nota_id ));
-        switch ($opcion)
-        {
-            case "ver": return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));
-                        break ;
-            case "editar": $nota= new $nota();
-                           $formulario = $this->createForm(new EditarAvanceType(), $nota);
-                           $em=$this->getDoctrine()->getEntityManager();
+                          
                            $usercams = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
                                                                                    'puesto' => 'Camarografo'));
                            $fuentes = $em->getRepository('NotaBundle:Fuente')->findAll();
@@ -81,6 +98,6 @@ class AvanceController extends Controller
                 
                 break;
         }
-    }       
+    }     
     
  }
