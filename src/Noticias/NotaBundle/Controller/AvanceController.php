@@ -32,22 +32,20 @@ class AvanceController extends Controller
     {
         
         
-               
-          
-       
-          
-            
+             
             
        
       
     }
     
-    public function opcionesavancesAction($opcion)
-    {
-              $peticion=$this->getRequest();
-              $em=$this->getDoctrine()->getEntityManager();
-              $nota_id=$peticion->request->get("id");
-              $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' => $nota_id ));
+   public function opcionesavancesAction($opcion)
+    {        
+        $peticion=$this->getRequest();
+        $nota_id=$peticion->request->get("id");
+        $em=$this->getDoctrine()->getEntityManager(); 
+        $avance=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' => $nota_id ));
+   
+        
         switch ($opcion)
         {
             case "ver": return $this->render('NotaBundle:Default:'.$opcion.'_avance.html.twig',array('avance'=>$avance));
@@ -58,7 +56,8 @@ class AvanceController extends Controller
                                $request = $this->getRequest();
                                $id=$request->request->get("id");
                                $em=$this->getDoctrine()->getEntityManager();
-                               $nota=$em->getRepository('NotaBundle:Nota')->findById($id);
+                               $avance2=$em->getRepository('NotaBundle:Nota')->findOneBy(array('id' => $id));
+                               
                            
                                
                                 //se comprueba que le formulario tenga un metodo post
@@ -67,20 +66,25 @@ class AvanceController extends Controller
       {
         $formulario->bindRequest($request);
         //si el formulario es valido se dispone a insertar datos ala BD
-        if ($formulario->isValid()) 
-        {
+       // if ($formulario->isValid()) 
+        //{
             //rellenamos el formulario y los campos que faltan aqui
-            $nota = $formulario->getData(); 
-            
-            $nota->setCamarografo($request->request->get("camarografo"));
-            $nota->setFuente($request->request->get("fuente"));
            
-            $nota->setAvance($request->request->get("Avance"));
-            $nota->setTitulo($request->request->get("titulo"));
-            $em->persist($nota);
+            $avance2 = $formulario->getData(); 
+            //$avance2->setUrgente($avance2->getUrgente()); 
+            //$avance2->setFechaCrea($avance2->getFechaCrea());
+            //$avance2->setEstatal($avance2->getEstatal());
+            //$avance2->setAnual($avance2->getAnual());
+            
+            $avance2->setCamarografo($request->request->get("camarografo"));
+            $avance2->setFuente($request->request->get("fuente"));
+           
+            $avance2->setAvance($request->request->get("Avance"));
+            $avance2->setTitulo($request->request->get("titulo"));
+            $em->merge($avance2);
             $em->flush();
             return $this->redirect($this->generateUrl('tabla_avance'));
-        }
+       // }
       }
                           
                            $usercams = $em->getRepository('UsuarioBundle:Usuario')->findBy(array(
@@ -99,5 +103,7 @@ class AvanceController extends Controller
                 break;
         }
     }     
+    
+ 
     
  }
